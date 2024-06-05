@@ -1,9 +1,11 @@
 use raylib::math::Vector2;
 
-#[derive(Debug, Clone, Copy, PartialEq)]
+use crate::aabb::AABB;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)] // i32s are Eq
 pub struct Vec2 {
-    x: i32,
-    y: i32,
+    pub x: i32,
+    pub y: i32,
 }
 
 impl Vec2 {
@@ -16,6 +18,10 @@ impl Vec2 {
 
     pub fn new(x: i32, y: i32) -> Vec2 {
         Vec2 { x, y }
+    }
+
+    pub fn is_in(&self, bounds: AABB) -> bool {
+        *self & bounds
     }
 }
 // convert Vec2 to Vector2. If the 2 types had the same number type, I would of just did a `mem::transmute` but they don't.
