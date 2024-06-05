@@ -1,4 +1,4 @@
-use raylib::math::Vector2;
+use ggez::glam;
 
 use crate::aabb::AABB;
 
@@ -26,9 +26,9 @@ impl Vec2 {
 }
 // convert Vec2 to Vector2. If the 2 types had the same number type, I would of just did a `mem::transmute` but they don't.
 // Interpreting a float as an int is.. not good.
-impl Into<Vector2> for Vec2 {
-    fn into(self) -> Vector2 {
-        Vector2::new(self.x as f32, self.y as f32)
+impl Into<glam::Vec2> for Vec2 {
+    fn into(self) -> glam::Vec2 {
+        glam::Vec2::new(self.x as f32, self.y as f32)
     }
 }
 
