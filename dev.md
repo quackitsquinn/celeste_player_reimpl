@@ -9,11 +9,12 @@
   - [How `MoveH` and `MoveV` works](https://maddymakesgames.com/articles/celeste_and_towerfall_physics/index.html)
 - `MoveHExact` and `MoveVExact` (`MoveH/VExact(int)`)
   - moves player on the x/y axis by the given amount. I believe it ignores collision
-- I believe Maddy said that all of the physics engine using ints and not floats which is helpful
+- I believe Maddy said that all of the physics engine using ints and not floats which is helpful for precision
+  - Granted, Raylib uses floats so that would have to be figured out (as in what the float value of a pixel is)
 
 ## Code locations
 
-- `NormalUpdate`: Gravity, Jumping, and Friction
+- `NormalUpdate`: Gravity, Jumping, and Frictions
 - `Update`: All encompassing update function for things that aren't a state
   - `Update` calls none of the state functions. They are all controlled by the `StateMachine` class. ([StateMachine source](https://github.com/JamesMcMahon/monocle-engine/blob/master/Monocle/Components/Logic/StateMachine.cs))
   - I don't really know where the state machine is updated, but its a part of monocle's ECS so its probably through that.
